@@ -1,2 +1,2 @@
 export * from './stars';
-export * from './star';
+export * from './count-selector';

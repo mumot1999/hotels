@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import Stars from './stars';
 
-vi.mock('../star/star', async () => {
+vi.mock('../../primitives/star/star', async () => {
   return {
     default: (args: any) => {
       return <div data-testid="star" {...args} />;

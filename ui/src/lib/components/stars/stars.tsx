@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import styled from 'styled-components';
-import Star from '../star/star';
+import Star from '../../primitives/star/star';
 
 /* eslint-disable-next-line */
 export interface StarsProps {
