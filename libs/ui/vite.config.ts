@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [
     react(),
     tsconfigPaths({
-      root: '../',
+      root: '../../',
       projects: ['tsconfig.base.json'],
     }),
   ],
@@ -20,7 +20,7 @@ export default defineConfig({
   test: {
     globals: true,
     cache: {
-      dir: '../node_modules/.vitest',
+      dir: '../../node_modules/.vitest',
     },
 
     environment: 'jsdom',

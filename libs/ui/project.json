@@ -25,7 +25,7 @@
         "uiFramework": "@storybook/react",
         "port": 4400,
         "config": {
-          "configFolder": "ui/.storybook"
+          "configFolder": "libs/ui/.storybook"
         }
       },
       "configurations": {
