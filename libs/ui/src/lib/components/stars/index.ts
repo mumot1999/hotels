@@ -1,2 +1,2 @@
-export { Stars, StarsProps } from './stars';
-export { useStars, UseStars } from './use-stars/use-stars';
+export * from './stars';
+export * from './use-stars/use-stars';

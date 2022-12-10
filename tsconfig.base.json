@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@hotels/data-access-hotels": ["libs/data-access-hotels/src/index.ts"],
-      "@hotels/ui": ["ui/src/index.ts"]
+      "@hotels/feature-hotels-list": ["libs/feature-hotels-list/src/index.ts"],
+      "@hotels/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
