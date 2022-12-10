@@ -1,18 +1,23 @@
 import { Hotel } from '@hotels/data-access-hotels';
 import { Stars } from '@hotels/ui';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { HotelRoom } from './hotel-room';
+import Modal from 'react-modal';
+import ImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 const StyledFeatureHotelsList = styled.div`
   display: flex;
   flex-direction: column;
   padding: 4em;
   gap: 2em;
-@media (min-width: 1400px) {
-  width: 60%;
-}
-align-self: center;
-width: 80%;
+  @media (min-width: 1400px) {
+    width: 60%;
+  }
+  align-self: center;
+  width: 80%;
 `;
 
 const HotelContainer = styled.div`
@@ -48,24 +53,54 @@ export type HotelsListProps = {
   hotels: Hotel[];
 };
 export function HotelsList(props: HotelsListProps) {
+  const [photos, setPhotos] = useState<string[]>([]);
+
   return (
     <StyledFeatureHotelsList>
       {props.hotels.map((hotel) => {
         return (
-          <HotelContainer>
-            <HotelHead>
-              <HotelImage src={hotel.images[0].url} />
-              <HotelMeta>
-                <HotelName>{hotel.name}</HotelName>
-                <HotelAddress>{hotel.address1}</HotelAddress>
-                <HotelAddress>{hotel.address2}</HotelAddress>
-              </HotelMeta>
-              <Stars stars={Number(hotel.starRating)} onClick={() => {}} />
-            </HotelHead>
-            {hotel.rooms.map((room) => (
-              <HotelRoom room={room} key={room.id} />
-            ))}
-          </HotelContainer>
+          <>
+            <Modal
+              isOpen={photos.length > 0}
+              onRequestClose={() => setPhotos([])}
+            >
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <AiFillCloseCircle
+                  onClick={() => setPhotos([])}
+                  size="40"
+                  style={{ marginLeft: 'auto' }}
+                />
+                <div style={{ display: 'flex', alignSelf: 'center' }}>
+                  <ImageGallery
+                    items={photos.map((photo) => ({
+                      original: photo,
+                      thumbnail: photo,
+                    }))}
+                  />
+                </div>
+              </div>
+            </Modal>
+            <HotelContainer>
+              <HotelHead>
+                <div
+                  onClick={() =>
+                    setPhotos(hotel.images.map((photo) => photo.url))
+                  }
+                >
+                  <HotelImage src={hotel.images[0].url} />
+                </div>
+                <HotelMeta>
+                  <HotelName>{hotel.name}</HotelName>
+                  <HotelAddress>{hotel.address1}</HotelAddress>
+                  <HotelAddress>{hotel.address2}</HotelAddress>
+                </HotelMeta>
+                <Stars stars={Number(hotel.starRating)} onClick={() => {}} />
+              </HotelHead>
+              {hotel.rooms.map((room) => (
+                <HotelRoom room={room} key={room.id} />
+              ))}
+            </HotelContainer>
+          </>
         );
       })}
     </StyledFeatureHotelsList>
