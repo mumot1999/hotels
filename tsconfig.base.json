@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@hotels/data-access-hotels": ["libs/data-access-hotels/src/index.ts"],
       "@hotels/ui": ["ui/src/index.ts"]
     }
   },
