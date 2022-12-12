@@ -4,7 +4,7 @@ import Star from '../../primitives/star/star';
 /* eslint-disable-next-line */
 export interface StarsProps {
   stars?: number;
-  onClick: (starIndex: number) => void;
+  onClick?: (starIndex: number) => void;
 }
 
 const StyledStars = styled.div`
@@ -24,11 +24,12 @@ export function Stars(props: StarsProps) {
       {Array.from({ length: 5 }).map((_, index) => (
         <StarContainer
           onClick={() => {
-            props.onClick(index);
+            props.onClick?.(index);
           }}
           key={index}
         >
           <Star
+            clickable={Boolean(props.onClick)}
             mode={getMode({
               currentIndex: index,
               stars: props.stars ?? 0,

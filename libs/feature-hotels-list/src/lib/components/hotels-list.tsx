@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { Clickable } from 'libs/ui/src/lib/primitives/clickable/cliclable';
 
 const StyledFeatureHotelsList = styled.div`
   display: flex;
@@ -68,7 +69,7 @@ export function HotelsList(props: HotelsListProps) {
                 <AiFillCloseCircle
                   onClick={() => setPhotos([])}
                   size="40"
-                  style={{ marginLeft: 'auto' }}
+                  style={{ marginLeft: 'auto', cursor: 'pointer' }}
                 />
                 <div style={{ display: 'flex', alignSelf: 'center' }}>
                   <ImageGallery
@@ -82,19 +83,19 @@ export function HotelsList(props: HotelsListProps) {
             </Modal>
             <HotelContainer>
               <HotelHead>
-                <div
+                <Clickable
                   onClick={() =>
                     setPhotos(hotel.images.map((photo) => photo.url))
                   }
                 >
                   <HotelImage src={hotel.images[0].url} />
-                </div>
+                </Clickable>
                 <HotelMeta>
                   <HotelName>{hotel.name}</HotelName>
                   <HotelAddress>{hotel.address1}</HotelAddress>
                   <HotelAddress>{hotel.address2}</HotelAddress>
                 </HotelMeta>
-                <Stars stars={Number(hotel.starRating)} onClick={() => {}} />
+                <Stars stars={Number(hotel.starRating)} />
               </HotelHead>
               {hotel.rooms.map((room) => (
                 <HotelRoom room={room} key={room.id} />

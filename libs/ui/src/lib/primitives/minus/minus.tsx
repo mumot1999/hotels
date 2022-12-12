@@ -1,3 +1,5 @@
+import { Clickable } from "../clickable/cliclable";
+
 export const Minus = () => {
-  return <div>-</div>;
+  return <Clickable>-</Clickable>;
 };
