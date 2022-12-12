@@ -1,4 +1,3 @@
-import { useHotelsQuery } from '@hotels/data-access-hotels';
 import styled from 'styled-components';
 import { FeatureHotelsList } from '@hotels/feature-hotels-list';
 
@@ -7,7 +6,6 @@ const StyledApp = styled.div`
 `;
 
 export function App() {
-  useHotelsQuery();
   return (
     <StyledApp>
       <FeatureHotelsList />
